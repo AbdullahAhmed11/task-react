@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { UserAuth } from '../context/AuthContext';
+import Upload from './Upload';
 
 const Account = () => {
     const { user, logout } = UserAuth();
     const navigate = useNavigate();
+    const [selectedImage, setSelectedImage] = useState(null);
+
 
     const handleLogout = async () => {
         try {
@@ -18,6 +21,7 @@ const Account = () => {
 
     return (
         <div className='max-w-[600px] mx-auto my-16 p-4'>
+            <Upload />
             <h1 className='text-2xl font-bold py-4'>Account</h1>
             <p>User Email: {user && user.email}</p>
 
