@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import Account from "./components/Account";
 import ProtectedRoute from "./components/ProtectRouter";
 import { AuthContextProvider } from "./context/AuthContext";
+import Banner from "./components/Banner";
 function App() {
   return (
     <div>

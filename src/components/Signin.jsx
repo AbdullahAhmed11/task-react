@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserAuth } from '../context/AuthContext';
 import { getAnalytics, logEvent } from "firebase/analytics"
-
+import { GoogleButton } from 'react-google-button';
 const Signin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
-    const { signIn } = UserAuth();
+    const { signIn, googleSignIn } = UserAuth();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,6 +21,17 @@ const Signin = () => {
             console.log(e.message)
         }
     };
+
+
+    const handleGoogleSignin = async () => {
+        try {
+            await googleSignIn()
+            navigate('/account')
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <div className='max-w-[700px] mx-auto my-16 p-4'>
@@ -50,6 +61,9 @@ const Signin = () => {
                     Sign In
                 </button>
             </form>
+            <div className='flex itemes-center justify-center'>
+                <GoogleButton onClick={handleGoogleSignin} />
+            </div>
         </div>
     );
 }
