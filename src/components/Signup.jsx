@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { UserAuth } from '../context/AuthContext';
 import { getAnalytics, logEvent } from 'firebase/analytics';
-import { GoogleButton } from 'react-google-button';
 
 const Signup = () => {
 
@@ -10,7 +9,7 @@ const Signup = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('')
     const navigate = useNavigate()
-    const { createUser, googleSignIn } = UserAuth();
+    const { createUser } = UserAuth();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -24,15 +23,7 @@ const Signup = () => {
         }
     };
 
-    const handleGoogleSignin = async () => {
-        try {
-            await googleSignIn()
-            navigate('/account')
 
-        } catch (error) {
-            console.log(error)
-        }
-    }
 
 
     return (
@@ -71,9 +62,6 @@ const Signup = () => {
                     Sign Up
                 </button>
             </form>
-            <div className='flex itemes-center justify-center'>
-                <GoogleButton onClick={handleGoogleSignin} />
-            </div>
         </div>
     );
 }

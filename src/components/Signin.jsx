@@ -66,7 +66,7 @@ const Signin = () => {
                 <button
                     onClick={handleGoogleSignin}
                     className='border border-blue-500 bg-blue-600 hover:bg-blue-500 w-full p-4 my-2 text-white'>
-                    Sign In with google
+                    Sign In with googlerr
                 </button>
             </div>
         </div>
