@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Modal from './Modal';
 
 const Upload = () => {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -25,7 +26,6 @@ const Upload = () => {
     "/>
                 </label>
             </form>
-
             {selectedImage && (
                 <div className='flex items-center justify-center flex-col mt-5'>
                     <img
@@ -36,8 +36,10 @@ const Upload = () => {
                     />
                     <br />
                     <button onClick={() => setSelectedImage(null)} className='border px-6 py-2 my-4'>Remove</button>
+                    <Modal />
                 </div>
             )}
+
         </>
 
     )
