@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { UserAuth } from '../context/AuthContext';
 import { getAnalytics, logEvent } from "firebase/analytics"
 import { GoogleButton } from 'react-google-button';
+
 const Signin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -62,7 +63,11 @@ const Signin = () => {
                 </button>
             </form>
             <div className='flex itemes-center justify-center'>
-                <GoogleButton onClick={handleGoogleSignin} />
+                <button
+                    onClick={handleGoogleSignin}
+                    className='border border-blue-500 bg-blue-600 hover:bg-blue-500 w-full p-4 my-2 text-white'>
+                    Sign In with google
+                </button>
             </div>
         </div>
     );
